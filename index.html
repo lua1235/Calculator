@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+        <h1>Step-by-Step Calculator</h1>
+    </header>
+    <div id="input">
+        <h3>Instructions</h3>
+        <p>Enter a valid algebraic expression into the text box below. Calculator will solve step by step following order of operations.</p>
+        <p>Recognized operations:</p>
+        <ul>
+            <li>multiplication: a*b</li>
+            <li>division: a/b</li>
+            <li>parentheticals: a(b+c)</li>
+            <li>addition: a+b</li>
+            <li>subtraction: a-b</li>
+        </ul>
+        <h3>Input</h3>
+        <p><input type="text" id="ex"></p>
+        <p><button id="submit" >Submit</button></p>
+    </div>
+    <hr>
+    <div id="output">
+        <p>Entered expression: <span id="in"></span></p>
+        <p>Unsupported character detected: <span id="err"></span></p>
+    </div>
+
+	<script src="script.js"></script>
+  </body>
+</html>
