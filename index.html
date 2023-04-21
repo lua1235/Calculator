@@ -9,27 +9,31 @@
   </head>
   <body>
     <header>
-        <h1>Step-by-Step Calculator</h1>
+        <h1>Compound Interest Calculator</h1>
     </header>
     <div id="input">
         <h3>Instructions</h3>
-        <p>Enter a valid algebraic expression into the text box below. Calculator will solve step by step following order of operations.</p>
-        <p>Recognized operations:</p>
-        <ul>
-            <li>multiplication: a*b</li>
-            <li>division: a/b</li>
-            <li>parentheticals: a(b+c)</li>
-            <li>addition: a+b</li>
-            <li>subtraction: a-b</li>
-        </ul>
+        <p>Enter values into the boxes below. Click Submit to calculate.</p>
         <h3>Input</h3>
-        <p><input type="text" id="ex"></p>
+        <p>Investment amount: $<input type="number" id="invest"></p>
+        <p>Annual Interest rate: <input type="number" id="interest">%</p>
+        <p>Compound time: <input type="number" id="time" value="0" placeholder="months"></p>
+        <p>Investment time: <input type="number" id="years" placeholder="years">,<input type="number" id="months" placeholder="months"></p>
         <p><button id="submit" >Submit</button></p>
     </div>
+    <h3>Formula:</h3>
+    <p>A=P(1+R/T)<sup>NT</sup></p>
+    <p>where A is the final balance, P is the initial investment, 
+      R is the annual interest rate, N is the total investment time in years, 
+      and T is the number of times interest is compounded per year.
+    </p>
     <hr>
     <div id="output">
-        <p>Entered expression: <span id="in"></span></p>
-        <p>Unsupported character detected: <span id="err"></span></p>
+        <p>Calculation: <span id="calc"></span></p>
+        <p>Initial Investment: <span id="initial"></span></p>
+        <p>Final Balance: <span id="balance"></span></p>
+        <p>Total Interest: <span id="rev"></span></p>
+
     </div>
 
 	<script src="script.js"></script>

@@ -1,12 +1,21 @@
 document.getElementById("submit").addEventListener("click", calc)
-function validate(raw) { // error checking logic
-    for(let i = 0; i<raw.length; i++) {
-    if((/[0-9\(\)\*\/+-]/).test(raw.charAt(i)) == false) {
-
+function val(element) { // Sets value to 0 if none entered
+    if(!element.value) { // If no value is entered, default is 0
+        return 0
     }
-    }
+    return element.value
 }
 function calc() {
-    let raw = document.getElementById("ex").value;
-
+    // Get input values
+    let initial = val(document.getElementById("invest"));
+    let interest = val(document.getElementById("interest")); 
+    let unTime = val(document.getElementById("time"));
+    let toYears = val(document.getElementById("years"));
+    let toMonths = val(document.getElementById("months"));
+    // Calculations
+    const unInterest = 1+interest*unTime/(1200);
+    const toTime = toYears*12+toMonths;
+    // Set output values
+    document.getElementById("calc").innerHTML=""+initial+"("+unInterest+")<sup><sup>"+toTime+"</sup>/<sub>"+unTime+"</sub></sup>"
+    document.getElementById("output").style.visibility = "visible"
 }
