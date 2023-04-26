@@ -3,9 +3,11 @@ function val(element) { // Sets value to 0 if none entered
     if(!element.value) { // If no value is entered, default is 0
         return 0
     }
-    return element.value
+    return parseInt(element.value)
 }
 function calc() {
+    document.getElementById("err").style.display = "none"
+    document.getElementById("output").style.visibility = "hidden"
     // Get input values
     let initial = val(document.getElementById("invest"));
     let interest = val(document.getElementById("interest")); 
@@ -13,9 +15,20 @@ function calc() {
     let toYears = val(document.getElementById("years"));
     let toMonths = val(document.getElementById("months"));
     // Calculations
-    const unInterest = 1+interest*unTime/(1200);
-    const toTime = toYears*12+toMonths;
-    // Set output values
-    document.getElementById("calc").innerHTML=""+initial+"("+unInterest+")<sup><sup>"+toTime+"</sup>/<sub>"+unTime+"</sub></sup>"
-    document.getElementById("output").style.visibility = "visible"
+    if(unTime == 0) {
+        document.getElementById("error").innerHTML="Divide by 0 error: Interest cannot be calculated for 0 or null value of compounds per year."
+        document.getElementById("err").style.display = "block"
+    } else {
+        const unInterest = interest/(unTime*100);
+        const toTime = toYears+toMonths/12;
+        const balance = (initial*(1+unInterest)**(toTime*unTime)).toFixed(2)
+        // Set output values
+        document.getElementById("calc").innerHTML=""+initial+"(1+"+unInterest+")<sup>"+toTime+"*"+unTime+"</sup>"
+        document.getElementById("initial").innerHTML="$"+initial.toFixed(2)
+        document.getElementById("balance").innerHTML="$"+balance
+        document.getElementById("rev").innerHTML="$"+(balance-initial).toFixed(2)
+        document.getElementById("output").style.visibility = "visible"
+
+    }
+    
 }
